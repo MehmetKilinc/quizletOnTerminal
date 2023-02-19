@@ -1,6 +1,7 @@
 import pyttsx3
 import sqlite3
 import random
+import os
 
 con = sqlite3.connect("kelime.db")
 cursor = con.cursor()
@@ -48,28 +49,39 @@ while True:
 	istek = int(input("ne istersin : "))
 	
 
-	if istek == 1:
-		id1 = int(input("id gir : "))
-		kelime = input("kelime gir : ")
-		anlam = input("anlamını gir : ")
-		kelime_ekle(id1 , kelime , anlam)
-	
+w	if istek == 1:
+		os.system("cls")
+		print("çıkmak için exit yaz")
+		b = True
+		while b:
+			id1 = kelimeleri_say() + 1
+			kelime = input("kelime gir : ")
+			if kelime == "exit":
+				break
+
+			anlam = input("anlamını gir : ")
+			kelime_ekle(id1 , kelime , anlam)
+			
 
 	if istek == 2:
+		os.system("cls")
 		kelime = input("silmek istediğin kelime : ")
 		kelime_sil(kelime)
 	
 
 	if istek == 3:
+		os.system("cls")
 		kelimeleri_goster()
 	
 
 	if istek == 4:
+		os.system("cls")
 		veri = kelimeleri_say()
 		print(veri)
 	
 
 	if istek == 5:
+		os.system("cls")
 		a = True
 		print("çıkmak için exit yaz.")
 		while a:
@@ -115,4 +127,5 @@ while True:
 
 	if istek == 7:
 		break
+
 
