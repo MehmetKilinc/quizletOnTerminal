@@ -49,25 +49,43 @@ while True:
 	istek = int(input("ne istersin : "))
 	
 
-w	if istek == 1:
+	if istek == 1:
 		os.system("cls")
 		print("çıkmak için exit yaz")
 		b = True
+		liste = list()
 		while b:
-			id1 = kelimeleri_say() + 1
+
+			cursor.execute("SELECT * FROM kelimeler")
+			veri = cursor.fetchall()
+			for i in veri:
+				liste.append(i[0])
+
+			a = kelimeleri_say()
+			for i in range(1,a+1):
+				if i not in liste:
+					id1 = i
+					break
+				else:
+
+					id1 = kelimeleri_say() + 1
+
+			
 			kelime = input("kelime gir : ")
 			if kelime == "exit":
 				break
 
 			anlam = input("anlamını gir : ")
 			kelime_ekle(id1 , kelime , anlam)
-			
+
 
 	if istek == 2:
-		os.system("cls")
-		kelime = input("silmek istediğin kelime : ")
-		kelime_sil(kelime)
-	
+		while True:
+			kelime = input("silmek istediğin kelime : ")
+			if kelime == "exit":
+				break
+			kelime_sil(kelime)
+			
 
 	if istek == 3:
 		os.system("cls")
