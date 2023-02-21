@@ -124,9 +124,14 @@ while True:
 	if istek == 6:
 		a = True
 		print("çıkmak için exit yaz.")
+		liste = list()
+		cursor.execute("SELECT * FROM kelimeler")
+		veri = cursor.fetchall()
+		for i in veri:
+			liste.append(i[0])
+		ust_deger = max(liste)	
 		while a:
-			ust_deger = kelimeleri_say()
-			sayi = random.randint(1,ust_deger)
+			sayi = random.randint(1,ust_deger + 1)
 			cursor.execute("SELECT * FROM kelimeler WHERE id == ?",(sayi,))
 			veri = cursor.fetchall()
 			for i in veri:
